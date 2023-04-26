@@ -31,7 +31,7 @@ const Main = ({ account }) => {
       const response = await contract.methods.totalSupply().call();
 
       setMintedNft(response);
-      setPage(parseInt((parseInt(response) - 1) / 2) + 1); //나중에 3을 10으로 수정.
+      setPage(parseInt((parseInt(response) - 1) / 5) + 1);
     } catch (error) {
       console.error(error);
     }
@@ -59,7 +59,7 @@ const Main = ({ account }) => {
   return (
     <>
       <Intro totalNft={totalNft} mintedNft={mintedNft} myNft={myNft} />
-      <Nfts page={page} />
+      <Nfts page={page} mintedNft={mintedNft} />
     </>
   );
 };
