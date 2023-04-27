@@ -36,13 +36,16 @@ const Header = ({ account, setAccount }) => {
   };
 
   useEffect(() => {
-    getCoinPrice();
+    const interval = setInterval(() => {
+      getCoinPrice();
+    }, 4000);
+    return () => clearInterval(interval);
   }, []);
 
   return (
     <header className="max-w-screen-xl mx-auto p-4 flex justify-between items-center font-bold">
       <Link to="/">
-        <div className="flex items-center text-main">
+        <div className="flex items-center text-gray-400">
           <GrGoogleWallet size={28} />
           <div className="ml-1 text-xl">Ble-Chess</div>
         </div>
@@ -61,7 +64,7 @@ const Header = ({ account, setAccount }) => {
         )}
         {account ? (
           <div className="flex items-center p-2 bg-gray-800 rounded-full ml-4">
-            <div className="bg-main w-6 h-6 rounded-full flex justify-center items-center">
+            <div className="bg-yellow-300 w-6 h-6 rounded-full flex justify-center items-center">
               <AiFillHeart />
             </div>
             <div className="ml-1">
@@ -74,7 +77,7 @@ const Header = ({ account, setAccount }) => {
             className="flex items-center p-2 bg-gray-800 rounded-full ml-4"
             onClick={onClickAccount}
           >
-            <div className="bg-main w-6 h-6 rounded-full flex justify-center items-center">
+            <div className="bg-yellow-300 w-6 h-6 rounded-full flex justify-center items-center">
               <BiWallet />
             </div>
             <div className="ml-1">Connect</div>

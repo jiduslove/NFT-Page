@@ -3,15 +3,15 @@ import { useEffect, useState } from "react";
 import { GrGoogleWallet } from "react-icons/gr";
 import { useParams } from "react-router-dom";
 
-const Detail = () => {
+const Detail2 = () => {
   const [metadata, setMetadata] = useState();
 
   const { tokenId } = useParams();
 
-  const getNft = async () => {
+  const getNft2 = async () => {
     try {
       const response = await axios.get(
-        `${process.env.REACT_APP_JSON_URL}/${tokenId}.json`
+        `${process.env.REACT_APP_JSON_URL2}/${tokenId}.json`
       );
 
       setMetadata(response.data);
@@ -21,7 +21,7 @@ const Detail = () => {
   };
 
   useEffect(() => {
-    getNft();
+    getNft2();
   }, []);
 
   return (
@@ -58,7 +58,7 @@ const Detail = () => {
           <div className="m-8">
             <div className="text-4xl flex items-center">
               <div>{metadata.name}</div>
-              <div className="bg-yellow-300 w-8 h-8 rounded-full flex justify-center items-center ml-2 text-gray-950">
+              <div className="bg-yellow w-8 h-8 rounded-full flex justify-center items-center ml-2 text-gray-950">
                 <GrGoogleWallet size={18} />
               </div>
             </div>
@@ -72,4 +72,4 @@ const Detail = () => {
   );
 };
 
-export default Detail;
+export default Detail2;

@@ -3,6 +3,7 @@ import Main from "./pages/main";
 import Detail from "./pages/detail";
 import Header from "./components/Header";
 import { useState } from "react";
+import Detail2 from "./pages/detail2";
 
 function App() {
   const [account, setAccount] = useState("");
@@ -14,6 +15,7 @@ function App() {
         <Routes>
           <Route path="/" element={<Main account={account} />} />
           <Route path="/:tokenId" element={<Detail />} />
+          <Route path="/a/:tokenId" element={<Detail2 />} />
         </Routes>
       </div>
     </BrowserRouter>
