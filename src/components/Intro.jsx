@@ -1,10 +1,19 @@
 import { GrGoogleWallet } from "react-icons/gr";
 import { CONTRACT_ADDRESS } from "../web3.config";
-
-const ranNum = Math.floor(Math.random() * 34) + 1;
-const imgSrc = `${process.env.REACT_APP_IMAGE_URL}/${ranNum}.png`;
+import { useEffect, useState } from "react";
 
 const Intro = ({ totalNft, mintedNft, myNft, totalNft2 }) => {
+  const [ranNum, setRanNum] = useState(1);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setRanNum(Math.floor(Math.random() * 34) + 1);
+    }, 1000);
+    return () => clearInterval(interval);
+  }, []);
+
+  const imgSrc = `${process.env.REACT_APP_IMAGE_URL}/${ranNum}.png`;
+
   return (
     <div className="bg-gradient-to-b from-transparent to-white via-black pt-10 ">
       <div className="max-w-screen-xl mx-auto px-4 relative">
@@ -76,9 +85,3 @@ const Intro = ({ totalNft, mintedNft, myNft, totalNft2 }) => {
 };
 
 export default Intro;
-
-<img
-  class="h-20 lg:h-[180px] w-20 lg:w-[180px] rounded-full object-cover"
-  src="https://konkrit-prod-collectionmedia-156cyqu7bx316.s3.ap-northeast-2.amazonaws.com/main/0x8e49127663ab3cb992c2eba9add5ec745055ca86.gif"
-  alt="test"
-></img>;

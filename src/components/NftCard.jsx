@@ -1,4 +1,5 @@
 import { GrGoogleWallet } from "react-icons/gr";
+import { MdDescription } from "react-icons/md";
 import { Link } from "react-router-dom";
 
 const NftCard = ({ tokenId, metadata, mintedNft }) => {
@@ -10,20 +11,20 @@ const NftCard = ({ tokenId, metadata, mintedNft }) => {
         </div>
       )}
       <img className="rounded-t-2xl" src={metadata.image} alt={metadata.name} />
-      <div className="mt-4 text-xl font-bold flex items-center px-4 text-gray-300">
-        Series NFT
+      <div className="mt-4 text-ml flex items-center px-4 text-gray-300">
+        Series by Dio
         <div className="bg-main w-6 h-6 rounded-full flex justify-center items-center ml-2 text-gray-950">
           <GrGoogleWallet size={16} />
         </div>
       </div>
-      <div className="mt-4 text-2xl font-bold px-4"># {tokenId}</div>
+      <div className="mt-2 text-l font-bold px-4">Emotion # {tokenId}</div>
       <div className="mt-4 text-xl flex justify-end px-4">
         <Link to={`/${tokenId}`}>
           <button
             disabled={parseInt(mintedNft) < tokenId}
-            className="bg-gray-50 text-gray-950 px-4 py-2 rounded-xl hover:bg-gray-500"
+            className="bg-gray-50 text-gray-950 mt-6 px-4 py-2 rounded-xl hover:bg-main"
           >
-            Detail
+            <MdDescription size={26} />
           </button>
         </Link>
       </div>

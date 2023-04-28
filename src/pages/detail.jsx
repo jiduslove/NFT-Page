@@ -1,10 +1,13 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { GrGoogleWallet } from "react-icons/gr";
+import { TbFileDescription } from "react-icons/tb";
 import { useParams } from "react-router-dom";
+import Modals from "../components/Modals";
 
 const Detail = () => {
   const [metadata, setMetadata] = useState();
+  const [suggestion, setSuggestion] = useState([]);
 
   const { tokenId } = useParams();
 
@@ -41,12 +44,13 @@ const Detail = () => {
               })}
             </ul>
             <div className="flex mt-4">
-              <button
+              {/* <button
                 className="mr-2 text-textPrimary h-[52px] text-base w-full rounded-2xl font-medium cursor-pointer leading-normal shadow-sm  bg-gray-700 hover:bg-yellow-400 "
                 type="button"
               >
                 제안하기
-              </button>
+              </button> */}
+              <Modals suggestion={suggestion} setSuggestion={setSuggestion} />
               <button
                 className="h-[52px] text-base w-full rounded-2xl font-medium cursor-pointer leading-normal shadow-sm   bg-gray-700 hover:bg-yellow-400 "
                 type="button"
@@ -55,14 +59,35 @@ const Detail = () => {
               </button>
             </div>
           </div>
-          <div className="m-8">
+          <div className="ml-8">
             <div className="text-4xl flex items-center">
               <div>{metadata.name}</div>
               <div className="bg-yellow-300 w-8 h-8 rounded-full flex justify-center items-center ml-2 text-gray-950">
                 <GrGoogleWallet size={18} />
               </div>
             </div>
-            <div className="mt-8 text-2xl">{metadata.description}</div>
+            <div className="mt-8 text-2xl">D.C - {metadata.description}</div>
+            <div class="px-4 lg:py-6 lg:px-5 py-5 lg:border-borderQuarternary lg:border-solid lg:border-[1px] rounded-[20px] min-h-[480px] mt-[32px]">
+              <div class="flex gap-x-[8px] font-semibold text-lg items-center mb-4">
+                <div>
+                  <TbFileDescription size={24} />
+                </div>
+                <div>제안 현황</div>
+              </div>
+              <div class="h-[520px] overflow-auto md:mt-4">
+                {suggestion.length === 0 ? (
+                  <div class="mt-[80px] text-center text-textQuarternary">
+                    받은 제안이 없어요
+                  </div>
+                ) : (
+                  <div class="mt-[80px] text-center text-textQuarternary">
+                    {suggestion.map((v, i) => (
+                      <li key={i}>{v}</li>
+                    ))}
+                  </div>
+                )}
+              </div>
+            </div>
           </div>
         </>
       ) : (

@@ -1,4 +1,5 @@
 import { GrGoogleWallet } from "react-icons/gr";
+import { MdDescription } from "react-icons/md";
 import { Link } from "react-router-dom";
 
 export default function NftCard2({ mintedNft2, tokenId2, metadata2 }) {
@@ -14,20 +15,20 @@ export default function NftCard2({ mintedNft2, tokenId2, metadata2 }) {
         src={metadata2.image}
         alt={metadata2.name}
       />
-      <div className="mt-4 text-xl font-bold flex items-center px-4 text-gray-300">
-        Special NFT
+      <div className="mt-4 text-ml flex items-center px-4 text-gray-300">
+        Special by Dio
         <div className="bg-main w-6 h-6 rounded-full flex justify-center items-center ml-2 text-gray-950">
           <GrGoogleWallet size={16} />
         </div>
       </div>
-      <div className="mt-4 text-2xl font-bold px-4"># {tokenId2}</div>
+      <div className="mt-2 text-l font-bold px-4">Emotion # {tokenId2}</div>
       <div className="mt-4 text-xl flex justify-end px-4">
         <Link to={`/a/${tokenId2}`}>
           <button
             disabled={parseInt(mintedNft2) < tokenId2}
-            className="bg-gray-50 text-gray-950 px-4 py-2 rounded-xl hover:bg-gray-500"
+            className="bg-gray-50 text-gray-950 mt-6 px-4 py-2 rounded-xl hover:bg-main"
           >
-            Detail
+            <MdDescription size={26} />
           </button>
         </Link>
       </div>
