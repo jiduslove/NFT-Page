@@ -39,7 +39,7 @@ export default function Modals({ suggestion, setSuggestion }) {
         <Modal isOpen={isOpen} onClose={onClose}>
           <ModalOverlay />
           <ModalContent>
-            <ModalHeader>What's Up?!</ModalHeader>
+            <ModalHeader>💡Make a Suggestion</ModalHeader>
             <ModalCloseButton />
             <ModalBody>
               <Input
