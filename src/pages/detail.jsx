@@ -28,7 +28,7 @@ const Detail = () => {
   }, []);
 
   return (
-    <div className="flex flex-col xl:flex-row justify-center items-center py-16 bg-gray-900">
+    <div className="flex flex-col xl:flex-row  justify-center items-center py-16 bg-gray-900">
       {metadata ? (
         <>
           <div className="max-w-[512px]">

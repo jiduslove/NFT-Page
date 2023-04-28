@@ -17,12 +17,15 @@ export default function Modals({ suggestion, setSuggestion }) {
   const [name, setName] = useState();
   const { isOpen, onOpen, onClose } = useDisclosure();
 
-  const onClickSuggestion = () => {
+  const onClickSuggestion = (e) => {
+    e.preventDefault();
     if (name === "") {
       alert("제안을 입력해 주세요!");
     } else {
       setSuggestion([...suggestion, name]);
       setName("");
+
+      onClose();
     }
   };
 
@@ -42,14 +45,16 @@ export default function Modals({ suggestion, setSuggestion }) {
             <ModalHeader>💡Make a Suggestion</ModalHeader>
             <ModalCloseButton />
             <ModalBody>
-              <Input
-                placeholder="제안을 입력해주세요!"
-                onChange={(e) => setName(e.target.value)}
-                value={name}
-              />
-              <Button onClick={onClickSuggestion} mt={"10px"}>
-                제안하기
-              </Button>
+              <form onSubmit={onClickSuggestion}>
+                <Input
+                  placeholder="제안을 입력해주세요!"
+                  onChange={(e) => setName(e.target.value)}
+                  value={name}
+                />
+                <Button type={"submit"} mt={"10px"}>
+                  제안하기
+                </Button>
+              </form>
             </ModalBody>
             <ModalFooter>
               <Button ml={4} onClick={onClose}>
